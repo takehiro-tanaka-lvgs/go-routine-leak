@@ -1,0 +1,14 @@
+version: '3.7'
+services:
+  web:
+    build: ./
+    environment:
+      APP_ENV: local
+      TZ: Asia/Tokyo
+    volumes:
+      - ./:/go/src/example.com/go-routine-leak
+    command: go build && ./go-routine-leak
+    ports:
+      - "80:80"
+      - "443:443"
+    working_dir: /go/src/example.com/go-routine-leak
